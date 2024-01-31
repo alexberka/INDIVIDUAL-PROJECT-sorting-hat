@@ -108,8 +108,43 @@ const renderDom = (div, htmlToRender) => {
   targetElement.innerHTML = htmlToRender
 }
 
+const sortingForm = () => {
+  const formHTML = `<form class="form-floating sortingHat" id="sortingHat">
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="hatFirstName" placeholder="First Name" required>
+                        <label for="hatFirstName">First Name</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="hatLastName" placeholder="Last Name" required>
+                        <label for="hatLastName">Last Name</label>
+                      </div>
+                      <button type="submit" class="btn btn-outline-dark">Sort</button>
+                    </form>`
+  renderDom('#hat', formHTML)
+  document.querySelector('#sortingHat').addEventListener('submit', (e) => {
+    e.preventDefault()
+    sortStudent()
+    document.querySelector('#sortingHat').reset()
+  })
+}
+
+const sortStudent = () => {
+  const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]
+  const randomHouse = houses[Math.floor(Math.random() * 4)]
+  const newStudent = {
+    index: students.length + expelled.length + 1,
+    firstname: document.querySelector('#hatFirstName').value,
+    lastname: document.querySelector('#hatLastName').value,
+    house: randomHouse,
+    expelled: false
+  }
+  students.push(newStudent)
+  filterStudents(randomHouse.toLowerCase())
+}
+
 const startUp = () => {
   eventListeners()
+  sortingForm()
   studentsHTML()
 }
 
