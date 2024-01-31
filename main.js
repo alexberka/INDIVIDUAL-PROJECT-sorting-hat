@@ -62,11 +62,31 @@ const filterStudents = (house) => {
   currDisp = house;
   if (house === "all") {
     studentsHTML()
-  } else if (house === "expelled") {
-    studentsHTML(expelled)
   } else {
     studentsHTML(students.filter(student => student.house.toLowerCase() === house))
   }
+}
+
+const expelledHTML = (list = expelled) => {
+  const listSort = list.sort((a, b) => a.lastname.localeCompare(b.lastname))
+  let htmlString = `<div class="card" style="width: 18rem;">
+                      <div class="card-body expelled">
+                        <h4>Voldemort's Army</h4>
+                      </div>
+                    </div>`
+  htmlString += list.reduce((a, b) => {
+    //Determine card class based on house and expulsion status 
+    a += `<div class="card" style="width: 18rem;">
+            <div class="card-body expelled">
+              <div class="card-left">
+                <h5 class="card-title">${b.firstname} ${b.lastname}</h5>
+                <p class="card-text"><i>${b.house}</i></p>
+              </div>
+            </div>
+          </div>`
+    return a
+  }, '')
+  renderDom('#expelledStudents', htmlString)
 }
 
 const studentsHTML = (list = students) => {
@@ -75,18 +95,14 @@ const studentsHTML = (list = students) => {
   const htmlString = list.reduce((a, b) => {
     //Determine card class based on house and expulsion status 
     a += `<div class="card" style="width: 18rem;">
-            <div class="card-body ${b.expelled ? "expelled" : b.house.toLowerCase()}">
+            <div class="card-body ${b.house.toLowerCase()}">
               <div class="card-left">
                 <h5 class="card-title">${b.firstname} ${b.lastname}</h5>
                 <p class="card-text"><i>${b.house}</i></p>
               </div>
-              <div class="card-right">`
-    //Include expel option if student has not yet been expelled
-    if (!b.expelled) {
-        a += `  <a href="#" class="btn btn-dark" id="expel--${b.index}">Expel</a>`
-    }
-    //Close divs on card
-        a += `</div>
+              <div class="card-right">
+                <a href="#" class="btn btn-dark" id="expel--${b.index}">Expel</a>
+              </div>
             </div>
           </div>`
     return a
@@ -101,6 +117,7 @@ const expelStudent = (targetId) => {
   ousted.expelled = true
   expelled.push(ousted)
   filterStudents(currDisp)
+  expelledHTML()
 }
 
 const renderDom = (div, htmlToRender) => {
@@ -146,6 +163,7 @@ const startUp = () => {
   eventListeners()
   sortingForm()
   studentsHTML()
+  expelledHTML()
 }
 
 startUp()
