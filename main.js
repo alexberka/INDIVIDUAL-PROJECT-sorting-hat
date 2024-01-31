@@ -1,3 +1,5 @@
+let currDisp = "all"
+
 const students = [
   {
     index: 1,
@@ -46,23 +48,47 @@ const eventListeners = () => {
       expelStudent(e.target.id)
     }
   })
+
+  const filterDisp = document.querySelector("#filter-bar")
+  filterDisp.addEventListener("click", (e) => {
+    if (e.target.id !== "filter-bar") {
+      const [house,] = e.target.id.split('-')
+      filterStudents(house)
+    }
+  })
+}
+
+const filterStudents = (house) => {
+  currDisp = house;
+  if (house === "all") {
+    studentsHTML()
+  } else if (house === "expelled") {
+    studentsHTML(expelled)
+  } else {
+    studentsHTML(students.filter(student => student.house.toLowerCase() === house))
+  }
 }
 
 const studentsHTML = (list = students) => {
+  const listSort = list.sort((a, b) => a.lastname.localeCompare(b.lastname))
   //Iterate through input array, converting into HTML for cards
   const htmlString = list.reduce((a, b) => {
-    //Determine card class based on house and expulsion status
-    const dispClass = b.expelled ? "expelled" : b.house.toLowerCase()
-    a += `<div class="card ${dispClass}" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">${b.firstname} ${b.lastname}</h5>
-              <p class="card-text"><i>${b.house}</i></p>`
+    //Determine card class based on house and expulsion status 
+    a += `<div class="card" style="width: 18rem;">
+            <div class="card-body ${b.expelled ? "expelled" : b.house.toLowerCase()}">
+              <div class="card-left">
+                <h5 class="card-title">${b.firstname} ${b.lastname}</h5>
+                <p class="card-text"><i>${b.house}</i></p>
+              </div>
+              <div class="card-right">`
     //Include expel option if student has not yet been expelled
     if (!b.expelled) {
-      a += `<a href="#" class="btn btn-outline-dark" id="expel--${b.index}">Expel</a>`
+        a += `  <a href="#" class="btn btn-dark" id="expel--${b.index}">Expel</a>`
     }
     //Close divs on card
-    a += `</div></div>`
+        a += `</div>
+            </div>
+          </div>`
     return a
   }, '')
   renderDom('#students', htmlString)
@@ -74,7 +100,7 @@ const expelStudent = (targetId) => {
   const [ousted] = students.splice(oustedIndex, 1)
   ousted.expelled = true
   expelled.push(ousted)
-  studentsHTML(students)
+  filterStudents(currDisp)
 }
 
 const renderDom = (div, htmlToRender) => {
