@@ -84,6 +84,10 @@ body {
   color: #efefef;
 }
 
+.card {
+  margin-bottom: auto;
+}
+
 .card-body {
   display: flex;
   justify-content: space-between;
