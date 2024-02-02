@@ -26,16 +26,33 @@ h1 {
 }
 
 body {
-  background: linear-gradient(90deg, #c9c2bc, #e6ded8, #c9c2bc);
+  background: linear-gradient(90deg, #ad9b8b, #e6ded8, #ad9b8b);
   /* background-size: cover; */
 }
 
 .hello {
   display: block;
+  text-align: center;
+}
+
+.hello-background {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhxiqvweoHwwV6eI08eCaSOuT1VOCVPU0S6g&usqp=CAU);
+  background-size: cover;
+}
+
+.great-hall {
+  background-image: url(https://uswalldecor.com/cdn/shop/files/RMK12541M.jpg?v=1695066227);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #top {
   text-align: center;
+  height: 120px;
+  padding: 40px;
+  text-shadow: 0 0 2px white;
+  border-bottom: 1px solid black;
 }
 
 .filter-bar {
@@ -113,6 +130,11 @@ body {
 
 .sortingHat {
   width: 10rem;
+  text-align: center;
+}
+
+.sortingHat button {
+  margin: 0 auto;
 }
 
 #students {
@@ -140,8 +162,23 @@ body {
   max-width: 66rem;
 }
 
+.card.expelled {
+  margin-bottom: 5px;
+}
+
 .all {
-  background: radial-gradient(#efefef, #cdcdcd)
+  background: radial-gradient(#efefef, #cdcdcd);
+  color: #101010;
+}
+
+.all-header {
+  background-image: url(https://i.pinimg.com/originals/3a/87/90/3a8790d8665660cc1d385c24d537b910.png);
+  background-size: cover;
+  background-position-y: -22vw;
+}
+
+.all-background {
+  background: linear-gradient(90deg, #cdcdcd, #efefef, #cdcdcd)
 }
 
 .gryffindor {
@@ -149,8 +186,32 @@ body {
   color: var(--gryffindor-acc);
 }
 
+.gryffindor-header {
+  background-image: url(https://i.pinimg.com/originals/0d/d6/cf/0dd6cf978271a62e2b91de048f415a16.jpg);
+  background-size: cover;
+  background-position-y: -18vw;
+  filter: brightness(75%);
+}
+
+.gryffindor-background {
+  background: linear-gradient(90deg, var(--gryffindor-bg2), var(--gryffindor-bg), var(--gryffindor-bg2));
+  color: var(--gryffindor-acc);
+}
+
 .hufflepuff {
   background: radial-gradient(var(--hufflepuff-bg), var(--hufflepuff-bg2));
+  color: var(--hufflepuff-acc);
+}
+
+.hufflepuff-header {
+  background-image: url(https://images4.alphacoders.com/134/1349158.png);
+  background-size: cover;
+  background-position-y: -28vw;
+  filter: brightness(75%);
+}
+
+.hufflepuff-background {
+  background: linear-gradient(90deg, var(--hufflepuff-bg2), var(--hufflepuff-bg), var(--hufflepuff-bg2));
   color: var(--hufflepuff-acc);
 }
 
@@ -163,7 +224,11 @@ body {
   background-image: url(https://jerrymarkham.com/wp-content/uploads/Pinnacle-18x14-1.jpg);
   background-size: cover;
   background-position-y: -17vw;
-  height: 120px;
+}
+
+.ravenclaw-background {
+  background: linear-gradient(90deg, var(--ravenclaw-bg2), var(--ravenclaw-bg), var(--ravenclaw-bg2));
+  color: var(--ravenclaw-acc);
 }
 
 .slytherin {
@@ -171,26 +236,71 @@ body {
   color: var(--slytherin-acc);
 }
 
-.expelled {
-  background: #101010;
+.slytherin-header {
+  background-image: url(https://i.redd.it/u9cf6xf035cy.jpg);
+  background-size: cover;
+  background-position-y: -19vw;
+  /* filter: hue-rotate(90deg) opacity(75%) grayscale(70%); */
 }
 
-.expelled h4, .expelled h5, .expelled p{ 
-  background-image: linear-gradient(#efefef 40%, #5f5d5d, #662020);
+.slytherin-background {
+  background: linear-gradient(90deg, var(--slytherin-bg2), var(--slytherin-bg), var(--slytherin-bg2));
+  color: var(--slytherin-acc);
+}
+
+.expelled {
+  background: radial-gradient(#39473f,#102010);
+}
+
+.expelled h4, .expelled h5, .expelled p { 
+  background-image: linear-gradient(#efefef 40%, #797979, #4ba70e);
   background-clip: text;
   color: transparent;
+  filter: drop-shadow(0 1px 2px rgb(0, 0, 0))
 }
 
 .card {
   margin-bottom: auto;
   min-width: 250px;
   max-width: 22rem;
+  border: none;
 }
 
 .card-body {
   display: flex;
   justify-content: space-between;
-  gap: 5px;
+  gap: 10px;
+  border-radius: 0.25rem;
+}
+
+.army-header {
+  border: none;
+  background-image: url(https://imgix.ranker.com/user_node_img/50127/1002537222/original/1002537222-photo-u1?auto=format&q=60&fit=crop&fm=pjpg&dpr=2&w=375);
+  background-size: 140%;
+}
+
+.hat-header-card {
+  margin-bottom: 16px;
+  border: none;
+  background-color: black;
+}
+
+.hat-header {
+  background-image: url(https://images.ctfassets.net/usf1vwtuqyxm/rH74qQ5ITmBB6HaTSOfFq/e2cc783b0658d19ae7446422e50c78c0/HP-F1-philosophers-stone-ron-sorting-hat-looking-concerned-web-landscape?fm=jpg&q=70&w=2560);
+  background-size: 200%;
+  top: -5px;
+  background-position-x: -64px;
+}
+
+.hat-header h4 {
+  background-image: linear-gradient(#efefef 40%, #797979);
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 1px 1px black)
+}
+
+.army-header h4, .hat-header h4 {
+  margin: 0;
 }
 
 .card-left {
@@ -199,4 +309,13 @@ body {
 
 .card-right {
   align-self: flex-end;
+}
+
+.expelled-btn {
+  border: none;
+}
+
+.expelled-btn:hover {
+  background-image: url(https://imgix.ranker.com/user_node_img/50127/1002537222/original/1002537222-photo-u1?auto=format&q=60&fit=crop&fm=pjpg&dpr=2&w=375);
+  background-size: 135%;
 }
