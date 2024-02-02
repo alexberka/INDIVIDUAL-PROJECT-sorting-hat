@@ -46,6 +46,7 @@ const eventListeners = () => {
   const studentDisp = document.querySelector("#students")
   studentDisp.addEventListener("click", (e) => {
     if (e.target.id.includes("expel")) {
+      if (expelled.length === 0) {showHide('#expelledStudents', '#armyToggle')}
       expelStudent(e.target.id)
     }
   })
@@ -233,7 +234,7 @@ const sortStudent = () => {
   
   students.push(newStudent)
   if (firstSort) {
-    showHide('#formToggle', '#filter-bar', '#students', '#expelledStudents', '#armyToggle')
+    showHide('#formToggle', '#filter-bar', '#students')
     eventListeners()
     studentsHTML()
     expelledHTML()
