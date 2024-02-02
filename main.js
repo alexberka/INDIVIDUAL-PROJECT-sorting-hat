@@ -2,44 +2,44 @@ let currDisp = "all"
 let firstSort = true
 
 const students = [
-  {
-    index: 1,
-    firstname: "Lavender",
-    lastname: "Brown",
-    house: "Gryffindor",
-    expelled: false
-  },
-  {
-    index: 2,
-    firstname: "Cedric",
-    lastname: "Diggory",
-    house: "Hufflepuff",
-    expelled: false
-  },
-  {
-    index: 3,
-    firstname: "Roger",
-    lastname: "Davies",
-    house: "Ravenclaw",
-    expelled: false
-  },
-  {
-    index: 4,
-    firstname: "Millicent",
-    lastname: "Bulstrode",
-    house: "Slytherin",
-    expelled: false
-  }
+//   {
+//     index: 1,
+//     firstname: "Lavender",
+//     lastname: "Brown",
+//     house: "Gryffindor",
+//     expelled: false
+//   },
+//   {
+//     index: 2,
+//     firstname: "Cedric",
+//     lastname: "Diggory",
+//     house: "Hufflepuff",
+//     expelled: false
+//   },
+//   {
+//     index: 3,
+//     firstname: "Roger",
+//     lastname: "Davies",
+//     house: "Ravenclaw",
+//     expelled: false
+//   },
+//   {
+//     index: 4,
+//     firstname: "Millicent",
+//     lastname: "Bulstrode",
+//     house: "Slytherin",
+//     expelled: false
+//   }
 ]
 
 const expelled = [
-  {
-    index: 5,
-    firstname: "Newton",
-    lastname: "Scamander",
-    house: "Hufflepuff",
-    expelled: true
-  }
+//   {
+//     index: 5,
+//     firstname: "Newton",
+//     lastname: "Scamander",
+//     house: "Hufflepuff",
+//     expelled: true
+//   }
 ]
 
 const eventListeners = () => {
@@ -84,11 +84,10 @@ const filterStudents = (house) => {
   currDisp = house;
   sizeStudents()
   document.querySelector('#top').className = `${house}-header`
-  document.querySelector('body').className = `${house}`
+  document.querySelector('body').className = `${house}-background`
   if (house === "all") {
     studentsHTML()
   } else {
-    document.querySelector('#top').innerHTML = ""
     studentsHTML(students.filter(student => student.house.toLowerCase() === house))
   }
 }
@@ -105,14 +104,14 @@ const expelledHTML = (list = expelled) => {
     "'s Snallygaster Snot",
     "'s Slug-eater",
     "'s Noxed Wand"]
-  let htmlString = `<div class="card" style="width: auto;">
-                      <div class="card-body expelled">
+  let htmlString = `<div class="card expelled" style="width: auto;">
+                      <div class="card-body expelled army-header">
                         <h4>Voldemort's Army</h4>
                       </div>
                     </div>`
   htmlString += list.reduce((a, b) => {
     //Determine card class based on house and expulsion status 
-    a += `<div class="card" style="width: 18rem;">
+    a += `<div class="card expelled" style="width: 16rem;">
             <div class="card-body expelled">
               <div class="card-left">
                 <h5 class="card-title">${b.firstname} ${b.lastname}</h5>
@@ -130,14 +129,14 @@ const studentsHTML = (list = students) => {
   //Iterate through input array, converting into HTML for cards
   const htmlString = list.reduce((a, b) => {
     //Determine card class based on house and expulsion status 
-    a += `<div class="card">
-            <div class="card-body ${b.house.toLowerCase()}">
+    a += `<div class="card ${b.house.toLowerCase()}">
+            <div class="card-body">
               <div class="card-left">
                 <h5 class="card-title">${b.firstname} ${b.lastname}</h5>
                 <p class="card-text"><i>${b.house}</i></p>
               </div>
               <div class="card-right">
-                <a href="#" class="btn btn-dark" id="expel--${b.index}">Expel</a>
+                <a href="#" class="btn btn-dark expelled-btn" id="expel--${b.index}">Expel</a>
               </div>
             </div>
           </div>`
@@ -164,6 +163,11 @@ const renderDom = (div, htmlToRender) => {
 
 const sortingForm = () => {
   const formHTML = `<form class="form-floating sortingHat" id="sortingHat">
+                      <div class="card hat-header-card" style="width: auto;">
+                        <div class="card-body hat-header">
+                          <h4>Sorting Hat</h4>
+                        </div>
+                      </div>
                       <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="hatFirstName" placeholder="First Name" required>
                         <label for="hatFirstName">First Name</label>
@@ -172,7 +176,8 @@ const sortingForm = () => {
                         <input type="text" class="form-control" id="hatLastName" placeholder="Last Name" required>
                         <label for="hatLastName">Last Name</label>
                       </div>
-                      <button type="submit" class="btn btn-outline-dark">Sort</button>
+                      <p><i>The sorting hat requires your name</i></p>
+                      <button type="submit" class="btn btn-light">Sort</button>
                     </form>`
   renderDom('#hat', formHTML)
   document.querySelector('#sortingHat').addEventListener('submit', (e) => {
@@ -183,18 +188,26 @@ const sortingForm = () => {
 }
 
 const helloForm = () => {
-  const greetingHTML = `<div class="card" style="width: 18rem;" id="hello-form">
-                      <div class="hello">
-                        <h5 class="card-title">Welcome to Hogwarts, Firsties</h5>
-                        <p class="card-text"><i>The Sorting Ceremony will take place in a few minutes
-                        in front of the rest of the school. I suggest you all
-                        smarten yourselves up as much as you can.</i></p>
-                        <a href="#" class="btn btn-primary" id="enter-sort">Enter Great Hall</a>
-                      </div>
-                    </div>`
+  const greetingHTML = `<div class="hello-card" style="width: 18rem;" id="hello-form">
+                          <div class="hello">
+                            <h5 class="card-title">Welcome to Hogwarts</h5>
+                            <p class="card-text"><i>The start-of-term banquet will begin shortly, but before
+                            you take your seats in the Great Hall, you will be sorted
+                            into your houses.</i></p>
+                            <p class="card-text"><i>The four houses are called Gryffindor, Hufflepuff,
+                            Ravenclaw and Slytherin. Each house has its own noble
+                            history and each has produced outstanding witches and
+                            wizards.</i></p>
+                            <p class="card-text"><i>The Sorting Ceremony will take place in a few minutes
+                            in front of the rest of the school. I suggest you all
+                            smarten yourselves up as much as you can.</i></p>
+                            <a href="#" class="btn btn-light" id="enter-sort">Enter Great Hall</a>
+                          </div>
+                        </div>`
   renderDom('#hat', greetingHTML)
   document.querySelector('#hello-form').addEventListener('click', (e) => {
     if (e.target.id === "enter-sort") {
+      document.querySelector('#top').className = "great-hall"
       sortingForm()
     }
   })
@@ -203,7 +216,13 @@ const helloForm = () => {
 const sortStudent = () => {
 
   const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]
-  const randomHouse = houses[Math.floor(Math.random() * 4)]
+  //Choose random house from houses array...
+  let randomHouse = houses[Math.floor(Math.random() * 4)]
+  //But sort all Weasleys into Gryffindor
+  if (document.querySelector('#hatLastName').value.toLowerCase() === "weasley") {
+    randomHouse = "Gryffindor";
+  }
+  //Create new Student object from user entry and random house assignment
   const newStudent = {
     index: students.length + expelled.length + 1,
     firstname: document.querySelector('#hatFirstName').value,
@@ -211,12 +230,15 @@ const sortStudent = () => {
     house: randomHouse,
     expelled: false
   }
+  
   students.push(newStudent)
   if (firstSort) {
     showHide('#formToggle', '#filter-bar', '#students', '#expelledStudents', '#armyToggle')
     eventListeners()
     studentsHTML()
     expelledHTML()
+    document.querySelector('#top').innerHTML = ""
+    filterStudents("all")
     firstSort = false
   } else {
     filterStudents(randomHouse.toLowerCase())
