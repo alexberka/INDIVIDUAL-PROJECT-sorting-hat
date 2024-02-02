@@ -143,7 +143,7 @@ const sortingForm = () => {
     e.preventDefault()
     sortStudent()
     if (firstSort) {
-      showHide('#filter-bar', '#students', '#expelledStudents')
+      showHide('#formToggle', '#filter-bar', '#students', '#expelledStudents', '#armyToggle')
       eventListeners()
       studentsHTML()
       expelledHTML()
