@@ -37,7 +37,7 @@ body {
   position: relative;
   width: 100vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 30px;
   padding: 30px;
 }
@@ -82,6 +82,10 @@ body {
 .expelled {
   background: #101010;
   color: #efefef;
+}
+
+.hello {
+  display: block;
 }
 
 .card {
