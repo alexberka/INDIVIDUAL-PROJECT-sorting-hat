@@ -2,13 +2,36 @@
   box-sizing: border-box;
 }
 
+:root {
+  --gryffindor-bg: rgb(158, 14, 43);
+  --gryffindor-bg2: rgb(126, 10, 33);
+  --gryffindor-acc: #daa520;
+  --hufflepuff-bg: #f8d71d;
+  --hufflepuff-bg2: #d6ba18;
+  --hufflepuff-acc: #203030;
+  --ravenclaw-bg: rgb(17, 47, 92);
+  --ravenclaw-bg2: rgb(13, 37, 73);
+  --ravenclaw-acc: rgb(173, 117, 91);
+  --slytherin-bg: #006400;
+  --slytherin-bg2: #014e01;
+  --slytherin-acc: #c0c0c0;
+}
+
 html {
   font-size: 16px;
+}
+
+h1 {
+  font-size: 1.3rem;
 }
 
 body {
   background: linear-gradient(90deg, #c9c2bc, #e6ded8, #c9c2bc);
   /* background-size: cover; */
+}
+
+.hello {
+  display: block;
 }
 
 #top {
@@ -23,14 +46,56 @@ body {
   flex-grow: 1;
   text-align: center;
   padding: 10px 20px;
+  z-index: 2;
+  transition: flex-grow .1s;
+  user-select: none;
 }
 
 .filter-btn:hover {
   cursor: pointer;
+  flex-grow: 1.1;
+  font-weight: bold;
 }
 
 .hide {
   display: none !important;
+}
+
+#toggle-bar {
+  position: relative;
+  width: 100vw;
+}
+
+.toggle {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  background: #efefef50;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  transition: padding .1s;
+  user-select: none;
+}
+
+.toggle:hover {
+  cursor: pointer;
+  padding: 6px 15px;
+  font-weight: bold;
+} 
+
+.toggle-out {
+  background: rgb(168, 0, 0);
+  color: #c0c0c0;
+}
+
+.show-hat {
+  left: 0;
+  border-radius: 0 0 5px 0;
+}
+
+.show-army {
+  right: 0;
+  border-radius: 0 0 0 5px;
 }
 
 #main-container {
@@ -42,59 +107,90 @@ body {
   padding: 30px;
 }
 
-.formToggle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 4;
-  background: #efefef50;
+#hat {
+  min-width: 10rem;
 }
 
-#hat {
-  width: 300px;
+.sortingHat {
+  width: 10rem;
 }
 
 #students {
-  display: flex;
-  flex-flow: row wrap;
+  display: grid;
+  margin-bottom: auto;
+  justify-content: space-around;
+  gap: 5px;
+  width: 100%;
+  min-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.few {
+  grid-template-columns: 1;
+}
+
+.some {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 44rem;
+}
+
+.many {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 66rem;
+}
+
+.all {
+  background: radial-gradient(#efefef, #cdcdcd)
 }
 
 .gryffindor {
-  background: rgb(158, 14, 43);
-  color: #daa520;
+  background: radial-gradient(var(--gryffindor-bg), var(--gryffindor-bg2));
+  color: var(--gryffindor-acc);
 }
 
 .hufflepuff {
-  background: #f8d71d;
-  color: #203030;
+  background: radial-gradient(var(--hufflepuff-bg), var(--hufflepuff-bg2));
+  color: var(--hufflepuff-acc);
 }
 
 .ravenclaw {
-  background: rgb(17, 47, 92);
-  color: rgb(173, 117, 91);
+  background: radial-gradient(var(--ravenclaw-bg), var(--ravenclaw-bg2));
+  color: var(--ravenclaw-acc);
+}
+
+.ravenclaw-header {
+  background-image: url(https://jerrymarkham.com/wp-content/uploads/Pinnacle-18x14-1.jpg);
+  background-size: cover;
+  background-position-y: -17vw;
+  height: 120px;
 }
 
 .slytherin {
-  background: #006400;
-  color: #c0c0c0;
+  background: radial-gradient(var(--slytherin-bg), var(--slytherin-bg2));
+  color: var(--slytherin-acc);
 }
 
 .expelled {
   background: #101010;
-  color: #efefef;
 }
 
-.hello {
-  display: block;
+.expelled h4, .expelled h5, .expelled p{ 
+  background-image: linear-gradient(#efefef 40%, #5f5d5d, #662020);
+  background-clip: text;
+  color: transparent;
 }
 
 .card {
   margin-bottom: auto;
+  min-width: 250px;
+  max-width: 22rem;
 }
 
 .card-body {
   display: flex;
   justify-content: space-between;
+  gap: 5px;
 }
 
 .card-left {
