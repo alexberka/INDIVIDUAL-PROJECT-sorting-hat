@@ -1,4 +1,5 @@
 let currDisp = "all"
+let firstSort = true
 
 const students = [
   {
@@ -141,11 +142,37 @@ const sortingForm = () => {
   document.querySelector('#sortingHat').addEventListener('submit', (e) => {
     e.preventDefault()
     sortStudent()
+    if (firstSort) {
+      showHide('#filter-bar', '#students', '#expelledStudents')
+      eventListeners()
+      studentsHTML()
+      expelledHTML()
+      firstSort = false
+    }
     document.querySelector('#sortingHat').reset()
   })
 }
 
+const helloForm = () => {
+  const greetingHTML = `<div class="card" style="width: 18rem;" id="hello-form">
+                      <div class="hello">
+                        <h5 class="card-title">Welcome to Hogwarts, Firsties</h5>
+                        <p class="card-text"><i>The Sorting Ceremony will take place in a few minutes
+                        in front of the rest of the school. I suggest you all
+                        smarten yourselves up as much as you can.</i></p>
+                        <a href="#" class="btn btn-primary" id="enter-sort">Enter Great Hall</a>
+                      </div>
+                    </div>`
+  renderDom('#hat', greetingHTML)
+  document.querySelector('#hello-form').addEventListener('click', (e) => {
+    if (e.target.id === "enter-sort") {
+      sortingForm()
+    }
+  })
+}
+
 const sortStudent = () => {
+
   const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]
   const randomHouse = houses[Math.floor(Math.random() * 4)]
   const newStudent = {
@@ -159,11 +186,12 @@ const sortStudent = () => {
   filterStudents(randomHouse.toLowerCase())
 }
 
+const showHide = (...elements) => {
+  elements.forEach(element => document.querySelector(element).classList.toggle("hide"))
+}
+
 const startUp = () => {
-  eventListeners()
-  sortingForm()
-  studentsHTML()
-  expelledHTML()
+  helloForm()
 }
 
 startUp()
