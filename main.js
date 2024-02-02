@@ -57,20 +57,55 @@ const eventListeners = () => {
       filterStudents(house)
     }
   })
+
+  document.querySelector("#formToggle").addEventListener("click", (e) => {
+    showHide('#hat')
+    toggleStyle('#formToggle')
+  })
+  document.querySelector("#armyToggle").addEventListener("click", (e) => {
+    showHide('#expelledStudents')
+    toggleStyle('#armyToggle')
+  })
 }
+
+const toggleStyle = (element) => {
+  const toggleTab = document.querySelector(element)
+  toggleTab.classList.toggle("toggle-out")
+  const toggleText = toggleTab.innerHTML.split(' ')
+  if (toggleText[0] === "Hide") {
+    toggleText[0] = "Show"
+  } else {
+    toggleText[0] = "Hide"
+  }
+  toggleTab.innerHTML = toggleText.join(" ")
+} 
 
 const filterStudents = (house) => {
   currDisp = house;
+  sizeStudents()
+  document.querySelector('#top').className = `${house}-header`
+  document.querySelector('body').className = `${house}`
   if (house === "all") {
     studentsHTML()
   } else {
+    document.querySelector('#top').innerHTML = ""
     studentsHTML(students.filter(student => student.house.toLowerCase() === house))
   }
 }
 
 const expelledHTML = (list = expelled) => {
   const listSort = list.sort((a, b) => a.lastname.localeCompare(b.lastname))
-  let htmlString = `<div class="card" style="width: 18rem;">
+  const appendages = [
+    "'s Shame",
+    "'s Misery",
+    "'s Wolfsbane",
+    "'s Worst",
+    "'s Darling Cheater",
+    "'s Own Dolores",
+    "'s Snallygaster Snot",
+    "'s Slug-eater",
+    "'s Noxed Wand"]
+  let htmlString = `<div class="card" style="width: auto;">
                       <div class="card-body expelled">
                         <h4>Voldemort's Army</h4>
                       </div>
@@ -81,7 +116,7 @@ const expelledHTML = (list = expelled) => {
             <div class="card-body expelled">
               <div class="card-left">
                 <h5 class="card-title">${b.firstname} ${b.lastname}</h5>
-                <p class="card-text"><i>${b.house}</i></p>
+                <p class="card-text"><i>${b.house + appendages[Math.floor(Math.random() * appendages.length)]}</i></p>
               </div>
             </div>
           </div>`
@@ -95,7 +130,7 @@ const studentsHTML = (list = students) => {
   //Iterate through input array, converting into HTML for cards
   const htmlString = list.reduce((a, b) => {
     //Determine card class based on house and expulsion status 
-    a += `<div class="card" style="width: 18rem;">
+    a += `<div class="card">
             <div class="card-body ${b.house.toLowerCase()}">
               <div class="card-left">
                 <h5 class="card-title">${b.firstname} ${b.lastname}</h5>
@@ -108,6 +143,7 @@ const studentsHTML = (list = students) => {
           </div>`
     return a
   }, '')
+  sizeStudents()
   renderDom('#students', htmlString)
 }
 
@@ -142,13 +178,6 @@ const sortingForm = () => {
   document.querySelector('#sortingHat').addEventListener('submit', (e) => {
     e.preventDefault()
     sortStudent()
-    if (firstSort) {
-      showHide('#formToggle', '#filter-bar', '#students', '#expelledStudents', '#armyToggle')
-      eventListeners()
-      studentsHTML()
-      expelledHTML()
-      firstSort = false
-    }
     document.querySelector('#sortingHat').reset()
   })
 }
@@ -183,7 +212,29 @@ const sortStudent = () => {
     expelled: false
   }
   students.push(newStudent)
-  filterStudents(randomHouse.toLowerCase())
+  if (firstSort) {
+    showHide('#formToggle', '#filter-bar', '#students', '#expelledStudents', '#armyToggle')
+    eventListeners()
+    studentsHTML()
+    expelledHTML()
+    firstSort = false
+  } else {
+    filterStudents(randomHouse.toLowerCase())
+  }
+}
+
+const sizeStudents = () => {
+  const studentsOn = currDisp !== "all" 
+    ? students.filter(student => student.house.toLowerCase() === currDisp).length
+    : students.length
+  const container = document.querySelector("#students")
+  if (studentsOn <= 1) {
+    container.className = "few" 
+  } else if (studentsOn === 2) {
+    container.className = "some"
+  } else {
+    container.className = "many"
+  }
 }
 
 const showHide = (...elements) => {
