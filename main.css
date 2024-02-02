@@ -35,11 +35,6 @@ body {
   text-align: center;
 }
 
-.hello-background {
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhxiqvweoHwwV6eI08eCaSOuT1VOCVPU0S6g&usqp=CAU);
-  background-size: cover;
-}
-
 .great-hall {
   background-image: url(https://uswalldecor.com/cdn/shop/files/RMK12541M.jpg?v=1695066227);
   background-size: cover;
@@ -49,8 +44,8 @@ body {
 
 #top {
   text-align: center;
-  height: 120px;
-  padding: 40px;
+  height: 10vw;
+  min-height: 60px;
   text-shadow: 0 0 2px white;
   border-bottom: 1px solid black;
 }
@@ -62,7 +57,7 @@ body {
 .filter-btn {
   flex-grow: 1;
   text-align: center;
-  padding: 10px 20px;
+  padding: 0.6rem 1.2rem;
   z-index: 2;
   transition: flex-grow .1s;
   user-select: none;
@@ -100,10 +95,7 @@ body {
   font-weight: bold;
 } 
 
-.toggle-out {
-  background: rgb(168, 0, 0);
-  color: #c0c0c0;
-}
+
 
 .show-hat {
   left: 0;
@@ -149,7 +141,7 @@ body {
 }
 
 .few {
-  grid-template-columns: 1;
+  grid-template-columns: 1fr;
 }
 
 .some {
@@ -160,6 +152,11 @@ body {
 .many {
   grid-template-columns: repeat(3, 1fr);
   max-width: 66rem;
+}
+
+.toggle-out {
+  background: rgb(168, 0, 0);
+  color: #c0c0c0;
 }
 
 .card.expelled {
@@ -288,8 +285,8 @@ body {
 .hat-header {
   background-image: url(https://images.ctfassets.net/usf1vwtuqyxm/rH74qQ5ITmBB6HaTSOfFq/e2cc783b0658d19ae7446422e50c78c0/HP-F1-philosophers-stone-ron-sorting-hat-looking-concerned-web-landscape?fm=jpg&q=70&w=2560);
   background-size: 200%;
-  top: -5px;
-  background-position-x: -64px;
+  top: -0.3rem;
+  background-position-x: -4rem;
 }
 
 .hat-header h4 {
@@ -318,4 +315,68 @@ body {
 .expelled-btn:hover {
   background-image: url(https://imgix.ranker.com/user_node_img/50127/1002537222/original/1002537222-photo-u1?auto=format&q=60&fit=crop&fm=pjpg&dpr=2&w=375);
   background-size: 135%;
+}
+
+@media all and (max-width: 1250px) {
+  .many {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 44rem;
+  }
+  #students {
+    min-width: 31rem;
+  }
+}
+
+@media all and (max-width: 1050px) {
+  .some, .many {
+    grid-template-columns: 1fr;
+  }
+  #students {
+    min-width: 15.6rem;
+  }
+}
+
+@media all and (max-width: 770px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media all and (max-width: 600px) {
+  #hat {
+    position: absolute;
+    background: #efefef;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    padding: 30px;
+    border-radius: 5px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  #main-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    margin-left: auto;
+    margin-right: auto;
+    width: 16rem;
+  }
+  /* #expelledStudents {} */
+  .filter-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr)
+  }
+
+  .filter-btn {
+    grid-column: span 2;
+  }
+  .filter-btn.all {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    padding: 20px 20px;
+  }
 }

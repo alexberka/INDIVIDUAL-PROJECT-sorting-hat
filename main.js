@@ -2,34 +2,34 @@ let currDisp = "all"
 let firstSort = true
 
 const students = [
-//   {
-//     index: 1,
-//     firstname: "Lavender",
-//     lastname: "Brown",
-//     house: "Gryffindor",
-//     expelled: false
-//   },
-//   {
-//     index: 2,
-//     firstname: "Cedric",
-//     lastname: "Diggory",
-//     house: "Hufflepuff",
-//     expelled: false
-//   },
-//   {
-//     index: 3,
-//     firstname: "Roger",
-//     lastname: "Davies",
-//     house: "Ravenclaw",
-//     expelled: false
-//   },
-//   {
-//     index: 4,
-//     firstname: "Millicent",
-//     lastname: "Bulstrode",
-//     house: "Slytherin",
-//     expelled: false
-//   }
+  {
+    index: 1,
+    firstname: "Lavender",
+    lastname: "Brown",
+    house: "Gryffindor",
+    expelled: false
+  },
+  {
+    index: 2,
+    firstname: "Cedric",
+    lastname: "Diggory",
+    house: "Hufflepuff",
+    expelled: false
+  },
+  {
+    index: 3,
+    firstname: "Roger",
+    lastname: "Davies",
+    house: "Ravenclaw",
+    expelled: false
+  },
+  {
+    index: 4,
+    firstname: "Millicent",
+    lastname: "Bulstrode",
+    house: "Slytherin",
+    expelled: false
+  }
 ]
 
 const expelled = [
