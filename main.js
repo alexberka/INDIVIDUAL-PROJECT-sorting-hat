@@ -4,34 +4,90 @@ let currDisp = "all"
 let firstSort = true
 
 const students = [
-  // {
-  //   index: 1,
-  //   firstname: "Lavender",
-  //   lastname: "Brown",
-  //   house: "Gryffindor",
-  //   expelled: false
-  // },
-  // {
-  //   index: 2,
-  //   firstname: "Cedric",
-  //   lastname: "Diggory",
-  //   house: "Hufflepuff",
-  //   expelled: false
-  // },
-  // {
-  //   index: 3,
-  //   firstname: "Roger",
-  //   lastname: "Davies",
-  //   house: "Ravenclaw",
-  //   expelled: false
-  // },
-  // {
-  //   index: 4,
-  //   firstname: "Millicent",
-  //   lastname: "Bulstrode",
-  //   house: "Slytherin",
-  //   expelled: false
-  // }
+  {
+    index: 1,
+    firstname: "Lavender",
+    lastname: "Brown",
+    house: "Gryffindor",
+    expelled: false
+  },
+  {
+    index: 2,
+    firstname: "Cedric",
+    lastname: "Diggory",
+    house: "Hufflepuff",
+    expelled: false
+  },
+  {
+    index: 3,
+    firstname: "Roger",
+    lastname: "Davies",
+    house: "Ravenclaw",
+    expelled: false
+  },
+  {
+    index: 4,
+    firstname: "Millicent",
+    lastname: "Bulstrode",
+    house: "Slytherin",
+    expelled: false
+  },
+  {
+    index: 5,
+    firstname: "Lavender",
+    lastname: "Brown",
+    house: "Gryffindor",
+    expelled: false
+  },
+  {
+    index: 6,
+    firstname: "Cedric",
+    lastname: "Diggory",
+    house: "Hufflepuff",
+    expelled: false
+  },
+  {
+    index: 7,
+    firstname: "Roger",
+    lastname: "Davies",
+    house: "Ravenclaw",
+    expelled: false
+  },
+  {
+    index: 8,
+    firstname: "Millicent",
+    lastname: "Bulstrode",
+    house: "Slytherin",
+    expelled: false
+  },
+  {
+    index: 9,
+    firstname: "Lavender",
+    lastname: "Brown",
+    house: "Gryffindor",
+    expelled: false
+  },
+  {
+    index: 10,
+    firstname: "Cedric",
+    lastname: "Diggory",
+    house: "Hufflepuff",
+    expelled: false
+  },
+  {
+    index: 11,
+    firstname: "Roger",
+    lastname: "Davies",
+    house: "Ravenclaw",
+    expelled: false
+  },
+  {
+    index: 12,
+    firstname: "Millicent",
+    lastname: "Bulstrode",
+    house: "Slytherin",
+    expelled: false
+  }
 ]
 
 const expelled = [
@@ -135,14 +191,14 @@ const expelledHTML = (list = expelled) => {
     "'s Slug-eater",
     "'s Noxed Wand"]
   // Pass HTML for Voldemort's Army header
-  let htmlString = `<div class="card expelled" style="width: auto;">
+  let htmlString = `<div class="card expelled">
                       <div class="card-body expelled army-header">
                         <h4>Voldemort's Army</h4>
                       </div>
                     </div>`
   htmlString += list.reduce((a, b) => {
     // Add HTML for expelled students, selecting random suffix option from appendages array
-    a += `<div class="card expelled" style="width: 16rem;">
+    a += `<div class="card expelled">
             <div class="card-body expelled">
               <div class="card-left">
                 <h5 class="card-title">${b.firstname} ${b.lastname}</h5>
@@ -305,6 +361,11 @@ const sortStudent = () => {
   } else {
     // If not first sort, filter students according to house assignment
     filterStudents(randomHouse.toLowerCase())
+  }
+  // If on display where Sorting Hat floats over screen, hide hat after each sort
+  if (window.innerWidth <= 600) {
+    showHide('#hat')
+    toggleStyle('#formToggle')
   }
 }
 
