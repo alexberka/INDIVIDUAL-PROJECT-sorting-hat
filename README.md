@@ -38,3 +38,7 @@ Use toggles to hide Sorting Hat and/or Voldemort's Army
 
 Filter buttons sort current (unexpelled) students by house
 ![Filter](/Sorting%20Hat%20Images/Filter.png)
+
+## Walkthrough
+
+![Loom Walkthrough](https://www.loom.com/share/e95f30fdba91416d8db9f5d1e5c210d0?sid=34c50b62-4284-4a69-b4ff-4ff648070f3a)
