@@ -19,22 +19,22 @@ Hogwarts administration has grown weary of their cranky ol' hat. We have built a
 
 ## Screenshots
 App opens to welcome screen with prompt to enter
-![Welcome Screen](.\Sorting Hat Images\Welcome.png)
+![Welcome Screen](/Sorting%20Hat%20Images/Welcome.png)
 
 Great Hall contains first sorting prompt
-![Great Hall](.\Sorting Hat Images\Great Hall.png)
+![Great Hall](/Sorting%20Hat%20Images/Great%20Hall.png)
 
 Students display on screen upon sorting
-![First Sort](.\Sorting Hat Images\First Sort.png)
+![First Sort](/Sorting%20Hat%20Images/First%20Sort.png)
 
 Continue to sort students using form on left
-![Multiple Students](.\Sorting Hat Images\Multiple Students.png)
+![Multiple Students](/Sorting%20Hat%20Images/Multiple%20Sort.png)
 
 Expel buttons move student to Voldemort's Army
-![Expel](.\Sorting Hat Images\Expel.png)
+![Expel](/Sorting%20Hat%20Images/Expel.png)
 
 Use toggles to hide Sorting Hat and/or Voldemort's Army
-![Toggle](.\Sorting Hat Images\Toggle.png)
+![Toggle](/Sorting%20Hat%20Images/Toggle.png)
 
 Filter buttons sort current (unexpelled) students by house
-![Filter](.\Sorting Hat Images\Filter.png)
+![Filter](/Sorting%20Hat%20Images/Filter.png)
