@@ -4,90 +4,34 @@ let currDisp = "all"
 let firstSort = true
 
 const students = [
-  {
-    index: 1,
-    firstname: "Lavender",
-    lastname: "Brown",
-    house: "Gryffindor",
-    expelled: false
-  },
-  {
-    index: 2,
-    firstname: "Cedric",
-    lastname: "Diggory",
-    house: "Hufflepuff",
-    expelled: false
-  },
-  {
-    index: 3,
-    firstname: "Roger",
-    lastname: "Davies",
-    house: "Ravenclaw",
-    expelled: false
-  },
-  {
-    index: 4,
-    firstname: "Millicent",
-    lastname: "Bulstrode",
-    house: "Slytherin",
-    expelled: false
-  },
-  {
-    index: 5,
-    firstname: "Lavender",
-    lastname: "Brown",
-    house: "Gryffindor",
-    expelled: false
-  },
-  {
-    index: 6,
-    firstname: "Cedric",
-    lastname: "Diggory",
-    house: "Hufflepuff",
-    expelled: false
-  },
-  {
-    index: 7,
-    firstname: "Roger",
-    lastname: "Davies",
-    house: "Ravenclaw",
-    expelled: false
-  },
-  {
-    index: 8,
-    firstname: "Millicent",
-    lastname: "Bulstrode",
-    house: "Slytherin",
-    expelled: false
-  },
-  {
-    index: 9,
-    firstname: "Lavender",
-    lastname: "Brown",
-    house: "Gryffindor",
-    expelled: false
-  },
-  {
-    index: 10,
-    firstname: "Cedric",
-    lastname: "Diggory",
-    house: "Hufflepuff",
-    expelled: false
-  },
-  {
-    index: 11,
-    firstname: "Roger",
-    lastname: "Davies",
-    house: "Ravenclaw",
-    expelled: false
-  },
-  {
-    index: 12,
-    firstname: "Millicent",
-    lastname: "Bulstrode",
-    house: "Slytherin",
-    expelled: false
-  }
+  // {
+  //   index: 1,
+  //   firstname: "Lavender",
+  //   lastname: "Brown",
+  //   house: "Gryffindor",
+  //   expelled: false
+  // },
+  // {
+  //   index: 2,
+  //   firstname: "Cedric",
+  //   lastname: "Diggory",
+  //   house: "Hufflepuff",
+  //   expelled: false
+  // },
+  // {
+  //   index: 3,
+  //   firstname: "Roger",
+  //   lastname: "Davies",
+  //   house: "Ravenclaw",
+  //   expelled: false
+  // },
+  // {
+  //   index: 4,
+  //   firstname: "Millicent",
+  //   lastname: "Bulstrode",
+  //   house: "Slytherin",
+  //   expelled: false
+  // }
 ]
 
 const expelled = [
